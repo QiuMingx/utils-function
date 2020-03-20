@@ -17,8 +17,29 @@ const size = val =>
     ? new Blob([val]).size
     : 0;
  
-    EXAMPLES
-    size([1, 2, 3, 4, 5]); // 5
-    size('size'); // 4
-    size({ one: 1, two: 2, three: 3 }); // 3
+示例：
+size([1, 2, 3, 4, 5]); // 5
+size('size'); // 4
+size({ one: 1, two: 2, three: 3 }); // 3
+```
+### 2. `dig`：根据给定的键，返回对象中的目标值.
+```
+const dig = (obj, target) =>
+  target in obj
+    ? obj[target]
+    : Object.values(obj).reduce((acc, val) => {
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
+      
+示例：
+const data = {
+  level1: {
+    level2: {
+      level3: 'some data'
+    }
+  }
+};
+dig(data, 'level3'); // 'some data'
+dig(data, 'level4'); // undefined
 ```
