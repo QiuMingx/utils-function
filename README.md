@@ -43,3 +43,18 @@ const data = {
 dig(data, 'level3'); // 'some data'
 dig(data, 'level4'); // undefined
 ```
+### 3. `objectToQueryString`：返回从给定对象的键值对生成的查询字符串.
+```
+const objectToQueryString = queryParameters => {
+  return queryParameters
+    ? Object.entries(queryParameters).reduce((queryString, [key, val], index) => {
+      const symbol = queryString.length === 0 ? '?' : '&';
+      queryString += typeof val === 'string' ? `${symbol}${key}=${val}` : '';
+      return queryString;
+    }, '')
+    : '';
+};
+
+示例
+objectToQueryString({ page: '1', size: '2kg', key: undefined }); // '?page=1&size=2kg'
+```
