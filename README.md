@@ -58,3 +58,13 @@ const objectToQueryString = queryParameters => {
 示例
 objectToQueryString({ page: '1', size: '2kg', key: undefined }); // '?page=1&size=2kg'
 ```
+### 4. `matches`：比较两个对象以确定第一个对象是否包含第二个对象.
+```
+const matches = (obj, source) =>
+  Object.keys(source).every(key => obj.hasOwnProperty(key) && obj[key] === source[key]);
+
+
+示例
+matches({ age: 25, hair: 'long', beard: true }, { hair: 'long', beard: true }); // true
+matches({ hair: 'long', beard: true }, { age: 25, hair: 'long', beard: true }); // false
+```
