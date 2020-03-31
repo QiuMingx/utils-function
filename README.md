@@ -68,3 +68,13 @@ const matches = (obj, source) =>
 matches({ age: 25, hair: 'long', beard: true }, { hair: 'long', beard: true }); // true
 matches({ hair: 'long', beard: true }, { age: 25, hair: 'long', beard: true }); // false
 ```
+### 5. `shallowClone`：创建对象的浅拷贝.
+```
+const shallowClone = obj => Object.assign({}, obj);
+
+示例
+const a = { x: true, y: 1 };
+const b = shallowClone(a); // a !== b
+
+```
+
