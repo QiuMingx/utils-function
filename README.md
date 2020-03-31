@@ -77,4 +77,15 @@ const a = { x: true, y: 1 };
 const b = shallowClone(a); // a !== b
 
 ```
+### 6. `forOwnRight`：反向遍历对象，每个对象运行一个回调.
 
+```
+const forOwnRight = (obj, fn) =>
+  Object.keys(obj)
+  .reverse()
+  .forEach(key => fn(obj[key], key, obj))
+}
+
+示例：
+forOwnRight({ a: '1', b: 2, c: 'c' }, v => console.log(v)); // 'c', 2 ,'1'
+```
