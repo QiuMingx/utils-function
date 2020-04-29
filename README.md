@@ -97,3 +97,11 @@ const truthCheckCollection = (collection, pre) => collection.every(obj => obj[pr
 示例：
 truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex: 'male' }], 'sex'); // true
 ```
+### 7. `objectToPairs`：对象转化为键值对二维数组.
+
+```
+const objectToPairs = obj => Object.entries(obj);
+
+示例：
+objectToPairs({ a: 1, b: 2 }); // [ ['a', 1], ['b', 2] ]
+```
