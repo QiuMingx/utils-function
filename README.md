@@ -89,3 +89,11 @@ const forOwnRight = (obj, fn) =>
 示例：
 forOwnRight({ a: '1', b: 2, c: 'c' }, v => console.log(v)); // 'c', 2 ,'1'
 ```
+### 7. `truthCheckCollection`：检查数组对象是否都存在该属性.
+
+```
+const truthCheckCollection = (collection, pre) => collection.every(obj => obj[pre])
+
+示例：
+truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex: 'male' }], 'sex'); // true
+```
