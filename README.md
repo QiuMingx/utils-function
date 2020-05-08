@@ -105,3 +105,4 @@ const objectToPairs = obj => Object.entries(obj);
 示例：
 objectToPairs({ a: 1, b: 2 }); // [ ['a', 1], ['b', 2] ]
 ```
+### 9. 
