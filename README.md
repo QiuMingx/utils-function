@@ -124,7 +124,7 @@ const lowercaseKeys = obj =>
 const myObj = { Name: 'Adam', sUrnAME: 'Smith' };
 const myObjLower = lowercaseKeys(myObj); // {name: 'Adam', surname: 'Smith'};
 ```
-### 11. `nest` 从指定的对象创建一个新的对象，其中所有键都小写
+### 11. `nest` 给定一组相互链接的平面对象，它将以递归方式嵌套它们
 ```
 const nest = (items, id = null, link = 'parent_id') =>
   items
