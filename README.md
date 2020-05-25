@@ -105,7 +105,51 @@ const objectToPairs = obj => Object.entries(obj);
 示例：
 objectToPairs({ a: 1, b: 2 }); // [ ['a', 1], ['b', 2] ]
 ```
-### 9. 
-### 10. 
-### 11. 
-### 12. 
+### 9. `objectFromPairs` 根据给定的键值对创建一个对象
+```
+const objectFromPairs = arr => arr.reduce((a, [key, val]) => ((a[key] = val), a), {});
+
+示例：
+objectFromPairs([['a', 1], ['b', 2]]); // {a: 1, b: 2}
+```
+### 10. `lowercaseKeys` 从指定的对象创建一个新的对象，其中所有键都小写
+```
+const lowercaseKeys = obj =>
+  Object.keys(obj).reduce((acc, key) => {
+    acc[key.toLowerCase()] = obj[key];
+    return acc;
+  }, {});
+
+示例：
+const myObj = { Name: 'Adam', sUrnAME: 'Smith' };
+const myObjLower = lowercaseKeys(myObj); // {name: 'Adam', surname: 'Smith'};
+```
+### 11. `nest` 从指定的对象创建一个新的对象，其中所有键都小写
+```
+const nest = (items, id = null, link = 'parent_id') =>
+  items
+    .filter(item => item[link] === id)
+    .map(item => ({ ...item, children: nest(items, item.id, link) }));
+
+示例：
+const comments = [
+  { id: 1, parent_id: null },
+  { id: 2, parent_id: 1 },
+  { id: 3, parent_id: 1 },
+  { id: 4, parent_id: 2 },
+  { id: 5, parent_id: 4 }
+];
+const nestedComments = nest(comments); // [{ id: 1, parent_id: null, children: [...] }]
+```
+## 2. 第二部分：浏览器
+### 1. `getURLParameters`  返回一个包含当前URL参数的对象
+```
+const getURLParameters = url =>
+  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+    (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
+    {}
+  );
+示例：
+getURLParameters('http://url.com/page?name=Adam&surname=Smith'); // {name: 'Adam', surname: 'Smith'}
+getURLParameters('google.com'); // {}
+```
